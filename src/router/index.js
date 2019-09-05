@@ -82,46 +82,47 @@ export const constantRoutes = [
         meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
       }
     ]
-  },
-  {
-    path: '/documentation',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
-      }
-    ]
-  },
-  {
-    path: '/guide',
-    component: Layout,
-    redirect: '/guide/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'Guide', icon: 'guide', noCache: true }
-      }
-    ]
-  },
-  {
-    path: '/profile',
-    component: Layout,
-    redirect: '/profile/index',
-    hidden: true,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/profile/index'),
-        name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
-      }
-    ]
   }
+  // kelvin：暂时不需要展示的内容，先注释掉
+  // {
+  //   path: '/documentation',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/documentation/index'),
+  //       name: 'Documentation',
+  //       meta: { title: 'Documentation', icon: 'documentation', affix: true }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/guide',
+  //   component: Layout,
+  //   redirect: '/guide/index',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/guide/index'),
+  //       name: 'Guide',
+  //       meta: { title: 'Guide', icon: 'guide', noCache: true }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/profile',
+  //   component: Layout,
+  //   redirect: '/profile/index',
+  //   hidden: true,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/profile/index'),
+  //       name: 'Profile',
+  //       meta: { title: 'Profile', icon: 'user', noCache: true }
+  //     }
+  //   ]
+  // }
 ]
 
 /**
@@ -129,6 +130,32 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
+
+  {
+    path: '/machine-management',
+    component: Layout,
+    redirect: '/machine/list',
+    name: 'Machine',
+    meta: {
+      title: '机器管理',
+      icon: 'component'
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/machine/list'),
+        name: 'MachineList',
+        meta: { title: '机器列表', icon: 'list' }
+      },
+      {
+        path: 'port',
+        component: () => import('@/views/machine/port'),
+        name: 'MachinePort',
+        meta: { title: '端口管理', icon: 'example' }
+      }
+    ]
+  },
+
   {
     path: '/permission',
     component: Layout,
